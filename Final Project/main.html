@@ -18,34 +18,108 @@
   </header>
   <body>
     <h2>Problem</h2>
-    <p>The problem statement we are trying to solve is detecting traffic lanes in real-time. With cars being driven every day and engineers trying to make cars safer, many companies are turning to machine learning and self-driving in order to help solve this problem. </p>
-    <p>This is an essential problem in the real world as there are an increasing number of cars with built-in technologies to do this. For example, Tesla has self-driving cars, and many other big-name automotive companies have technologies such as lane assist, ensuring that the driver is driving in the correct lane and direction. However, this technology is still very new and has many problems. For example, how can the computer detect a lane in poor weather conditions or a faded-out lane? What if there are no street lights at night that prevent the computer from detecting any lanes? What about the effects of lane-like objects on the road such as railways and walkways? These variables affect every driver and can affect traffic lane detection as well. While existing algorithms can have a very high detection rate, generally most of these tests are done using favorable conditions such as a clear road and good lighting (Huang et. al, 2021). 
+    <p>
+        The problem statement we are trying to solve is detecting traffic lanes in real-time. With cars being 
+        driven every day and engineers trying to make cars safer, many companies are turning to machine 
+        learning and self-driving in order to help solve this problem. 
+    </p>
+
+    <p>
+        This is an essential problem in the real world as there are an increasing number of cars with built-in 
+        technologies to do this. For example, Tesla has self-driving cars, and many other big-name automotive 
+        companies have technologies such as lane assist, ensuring that the driver is driving in the correct 
+        lane and direction. However, this technology is still very new and has many problems. For example, 
+        how can the computer detect a lane in poor weather conditions or a faded-out lane? What if there are 
+        no street lights at night that prevent the computer from detecting any lanes? What about the effects 
+        of lane-like objects on the road such as railways and walkways? These variables affect every driver 
+        and can affect traffic lane detection as well. While existing algorithms can have a very high 
+        detection rate, generally most of these tests are done using favorable conditions such as a clear 
+        road and good lighting (Huang et. al, 2021). 
     </p>
 
     <h2>Importance of Lane Detection</h2>
-    <p>According to the article “Drowsy driving statistics and facts 2022” by Elizabeth Rivelli, there have been over 10,000 fatal crashes due to drowsy or careless driving, including failure to keep in the proper lane, being distracted (by phone, talking eating, etc), and swerving due to weather, objects, etc. These serious fatalities could be easily avoided by equipping programs in modern cars with good traffic lane detections that can account for any, or at least most, situations (Rivelli, 2022).
+    <p>
+        According to the article “Drowsy driving statistics and facts 2022” by Elizabeth Rivelli, there have 
+        been over 10,000 fatal crashes due to drowsy or careless driving, including failure to keep in the 
+        proper lane, being distracted (by phone, talking eating, etc), and swerving due to weather, objects, 
+        etc. These serious fatalities could be easily avoided by equipping programs in modern cars with good 
+        traffic lane detections that can account for any, or at least most, situations (Rivelli, 2022).
     </p>
 
     <h2>Motivation / Usage</h2>
-    <p>Velit aliquet sagittis id consectetur purus ut faucibus. Quis commodo odio aenean sed adipiscing diam donec adipiscing. Sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus. Massa sed elementum tempus egestas sed. Suscipit tellus mauris a diam. Libero nunc consequat interdum varius sit amet mattis vulputate enim. Aliquam faucibus purus in massa tempor nec feugiat. Elementum curabitur vitae nunc sed velit. Nulla porttitor massa id neque aliquam vestibulum morbi blandit. Tincidunt dui ut ornare lectus sit amet est placerat in. Varius duis at consectetur lorem donec massa sapien faucibus. Est sit amet facilisis magna etiam tempor.</p>
+    <p>
+        This is an essential problem in the real world as there are an increasing number of cars with 
+        built-in technologies to do this. For example, Tesla has self-driving cars, and many other big-name 
+        automotive companies have technologies such as lane assist, ensuring that the driver is driving in 
+        the correct lane and direction. However, this technology is very new and has many problems. For 
+        example, how can the computer detect a lane in poor weather conditions or a faded-out lane? What if 
+        there are no street lights at night that prevent the computer from detecting any lanes? What about 
+        the effects of lane-like objects on the road such as railways and walkways? These variables affect 
+        every driver and can affect traffic lane detection as well. While existing algorithms can have a very 
+        high detection rate, generally most of these tests are done using favorable conditions such as a 
+        clear road and good lighting. 
+    </p>
   
     <h2>Current State of Art</h2>
-    <p>Velit aliquet sagittis id consectetur purus ut faucibus. Quis commodo odio aenean sed adipiscing diam donec adipiscing. Sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus. Massa sed elementum tempus egestas sed. Suscipit tellus mauris a diam. Libero nunc consequat interdum varius sit amet mattis vulputate enim. Aliquam faucibus purus in massa tempor nec feugiat. Elementum curabitur vitae nunc sed velit. Nulla porttitor massa id neque aliquam vestibulum morbi blandit. Tincidunt dui ut ornare lectus sit amet est placerat in. Varius duis at consectetur lorem donec massa sapien faucibus. Est sit amet facilisis magna etiam tempor.</p>
+    <p>
+        <a herf="https://ieeexplore.ieee.org/abstract/document/4580573">Article</a>
+        Many researchers has created high level road lane detection to account for any conditions, 
+        starting with a simple similar approch as ours, and adding more layed techniques to create effective algorithms.
+        For example, "Read time lane dection for autonomous vehicles" by some professors from International 
+        Islamic University Malaysia.
+    </p>
   
     <h2>Dataset</h2>
-    <p>We decided to use some of the images from the <a href="https://www.kaggle.com/datasets/jasonyuan000/unet-lanes-v3">UNet Lanes v3</a> dataset in Kaggle. To save on computation costs, a part of this dataset is a subset of a the much larger <a href="https://www.kaggle.com/datasets/thomasfermi/lane-detection-for-carla-driving-simulator">Carla Self driving car lane</a> dataset. Additionally, images have been augmented to have dashed lines labelled as mostly solid. The other part of the dataset comes from a variety of sources raning from dashcam videos to images.</p>
+    <p>
+        We decided to use some of the images from the 
+        <a href="https://www.kaggle.com/datasets/jasonyuan000/unet-lanes-v3">UNet Lanes v3</a> dataset in 
+        Kaggle. To save on computation costs, a part of this dataset is a subset of a the much larger 
+        <a href="https://www.kaggle.com/datasets/thomasfermi/lane-detection-for-carla-driving-simulator">
+        Carla Self driving car lane</a> dataset. Additionally, images have been augmented to have dashed 
+        lines labelled as mostly solid. The other part of the dataset comes from a variety of sources raning 
+        from dashcam videos to images.
+    </p>
 
     <h2>Proposed Solution</h2>
-    <p>We decided to use some of the images from the <a href="https://www.kaggle.com/datasets/jasonyuan000/unet-lanes-v3">UNet Lanes v3</a> dataset in Kaggle. To save on computation costs, a part of this dataset is a subset of a the much larger <a href="https://www.kaggle.com/datasets/thomasfermi/lane-detection-for-carla-driving-simulator">Carla Self driving car lane</a> dataset. Additionally, images have been augmented to have dashed lines labelled as mostly solid. The other part of the dataset comes from a variety of sources raning from dashcam videos to images.</p>
+    <p>
+        We decided to use some of the images from the 
+        <a href="https://www.kaggle.com/datasets/jasonyuan000/unet-lanes-v3">UNet Lanes v3</a> dataset in 
+        Kaggle. To save on computation costs, a part of this dataset is a subset of a the much larger 
+        <a href="https://www.kaggle.com/datasets/thomasfermi/lane-detection-for-carla-driving-simulator">
+            Carla Self driving car lane</a> dataset. Additionally, images have been augmented to have dashed 
+            lines labelled as mostly solid. The other part of the dataset comes from a variety of sources 
+            raning from dashcam videos to images.
+    </p>
 
     <h2>Proposed Method</h2>
-    <p>Velit aliquet sagittis id consectetur purus ut faucibus. Quis commodo odio aenean sed adipiscing diam donec adipiscing. Sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus. Massa sed elementum tempus egestas sed. Suscipit tellus mauris a diam. Libero nunc consequat interdum varius sit amet mattis vulputate enim. Aliquam faucibus purus in massa tempor nec feugiat. Elementum curabitur vitae nunc sed velit. Nulla porttitor massa id neque aliquam vestibulum morbi blandit. Tincidunt dui ut ornare lectus sit amet est placerat in. Varius duis at consectetur lorem donec massa sapien faucibus. Est sit amet facilisis magna etiam tempor.</p>
+    <p>
+        We first worked on creating a mask to highlight where the ptential lanes are, and then used Canny Edge 
+        Detection in order to make the edges apprear much more defined. We then worked on applying the Hough 
+        transform in order to detect edges. Then we applied the model and test on images in our dataset.
+        
+        However, without using a deep learning technique, the images needs to be high contrast and low harsh weather conditions.
+        Therefore, we used a Convolutional Neural Network (CNN) to enhance our model to detect images in any conditions.
+
     <ol>
       <h3><li>Lane Detection</li></h3>
-      <p>Velit aliquet sagittis id consectetur purus ut faucibus. Quis commodo odio aenean sed adipiscing diam donec adipiscing. Sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus. Massa sed elementum tempus egestas sed. Suscipit tellus mauris a diam. Libero nunc consequat interdum varius sit amet mattis vulputate enim. Aliquam faucibus purus in massa tempor nec feugiat. Elementum curabitur vitae nunc sed velit. Nulla porttitor massa id neque aliquam vestibulum morbi blandit. Tincidunt dui ut ornare lectus sit amet est placerat in. Varius duis at consectetur lorem donec massa sapien faucibus. Est sit amet facilisis magna etiam tempor.</p>
+      <p>Velit aliquet sagittis id consectetur purus ut faucibus. Quis commodo odio aenean sed adipiscing 
+        diam donec adipiscing. Sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus.
+        Massa sed elementum tempus egestas sed. Suscipit tellus mauris a diam. Libero nunc consequat interdum 
+        varius sit amet mattis vulputate enim. Aliquam faucibus purus in massa tempor nec feugiat. Elementum 
+        curabitur vitae nunc sed velit. Nulla porttitor massa id neque aliquam vestibulum morbi blandit. 
+        Tincidunt dui ut ornare lectus sit amet est placerat in. Varius duis at consectetur lorem donec massa 
+        sapien faucibus. Est sit amet facilisis magna etiam tempor.
+    </p>
   
       <h3><li>Prediction</li></h3>
-      <p>Velit aliquet sagittis id consectetur purus ut faucibus. Quis commodo odio aenean sed adipiscing diam donec adipiscing. Sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus. Massa sed elementum tempus egestas sed. Suscipit tellus mauris a diam. Libero nunc consequat interdum varius sit amet mattis vulputate enim. Aliquam faucibus purus in massa tempor nec feugiat. Elementum curabitur vitae nunc sed velit. Nulla porttitor massa id neque aliquam vestibulum morbi blandit. Tincidunt dui ut ornare lectus sit amet est placerat in. Varius duis at consectetur lorem donec massa sapien faucibus. Est sit amet facilisis magna etiam tempor.</p>
+      <p>Velit aliquet sagittis id consectetur purus ut faucibus. Quis commodo odio aenean sed adipiscing 
+        diam donec adipiscing. Sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus. 
+        Massa sed elementum tempus egestas sed. Suscipit tellus mauris a diam. Libero nunc consequat interdum 
+        varius sit amet mattis vulputate enim. Aliquam faucibus purus in massa tempor nec feugiat. Elementum 
+        curabitur vitae nunc sed velit. Nulla porttitor massa id neque aliquam vestibulum morbi blandit. 
+        Tincidunt dui ut ornare lectus sit amet est placerat in. Varius duis at consectetur lorem donec massa 
+        sapien faucibus. Est sit amet facilisis magna etiam tempor.
+    </p>
     </ol>
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>

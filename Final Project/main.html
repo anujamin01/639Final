@@ -73,8 +73,29 @@
       Our proposed solution is an algorithm that, given static images or even a video of a car driving on the road, will detect and highlight lanes in real-time. This will done through the image processing techniques learned from class. This approach forms the foundation of many of the state of the art advanced techniques that are currently being implemented in industry and academia.
     </p>
 
-    <h2>Proposed Method</h2>
+    <h2>Method</h2>
     <p>
+      For this project we used python and openCV in order to process an image i.e. a frame. 
+    </p>
+    <ol>
+      <h3><li>Applying Canny Edge Detection</li></h3>
+      <p>The intuitive step for lane detection is highlighting where potential lanes appear and masking the rest of the image. One can simply choose to select a color that is at least as bright as a lane and ignore the rest of the image. However, what happens if lane colors differ i.e. the left lane is yellow and the right lane is white? Clearly masking in itself will fail here. Therefore, it is critical that we use Canny Edge detection. 
+      </p>
+      <p>However, before we can do that we must turn the image into grayscale in order detect changes in color i.e. detect an edge. Then we follow the standard procedure of applying gaussian smoothing to eliminate any potential noise. We then applied canny edge detection with a proper lower and upper bound value to get the perfect amount of edge detection without having too many false positives. 
+      EMBED IMAGE HERE!
+      </p>
+      <h3><li>Applying Hough Transform</li></h3>
+      <p>Now that we have applied Canny Edge detection, we need to use the hough transform in order to isolate the lanes. In order to do so, we create a mask over the region where the lanes would lie. We then proceed to apply the hough transform over this region and display the output. 
+      EMBED IMAGE HERE!
+      </p>
+      <h3><li>Streamlining the Process</li></h3>
+      <p>Now that we are able to detect lanes on a static image, we need to detect lanes on a video stream. In order to do so, we just have to read in the image frame by frame and put each frame into our pipeline. We then join the new images with edge detection together and get a video stream of detected lanes.  
+      EMBED VIDEO HERE!
+      </p>
+    <h2>Problems with Current Approach</h2>
+    <h2>Further Exploration</h2>
+    <p>
+      For this project we used python and openCV in order to process an image i.e. a frame. 
         We first worked on creating a mask to highlight where the ptential lanes are, and then used Canny Edge 
         Detection in order to make the edges apprear much more defined. We then worked on applying the Hough 
         transform in order to detect edges. Then we applied the model and test on images in our dataset.
@@ -83,25 +104,6 @@
         Therefore, we used a Convolutional Neural Network (CNN) to enhance our model to detect images in any conditions.
 
     <ol>
-      <h3><li>Lane Detection</li></h3>
-      <p>Velit aliquet sagittis id consectetur purus ut faucibus. Quis commodo odio aenean sed adipiscing 
-        diam donec adipiscing. Sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus.
-        Massa sed elementum tempus egestas sed. Suscipit tellus mauris a diam. Libero nunc consequat interdum 
-        varius sit amet mattis vulputate enim. Aliquam faucibus purus in massa tempor nec feugiat. Elementum 
-        curabitur vitae nunc sed velit. Nulla porttitor massa id neque aliquam vestibulum morbi blandit. 
-        Tincidunt dui ut ornare lectus sit amet est placerat in. Varius duis at consectetur lorem donec massa 
-        sapien faucibus. Est sit amet facilisis magna etiam tempor.
-    </p>
-  
-      <h3><li>Prediction</li></h3>
-      <p>Velit aliquet sagittis id consectetur purus ut faucibus. Quis commodo odio aenean sed adipiscing 
-        diam donec adipiscing. Sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus. 
-        Massa sed elementum tempus egestas sed. Suscipit tellus mauris a diam. Libero nunc consequat interdum 
-        varius sit amet mattis vulputate enim. Aliquam faucibus purus in massa tempor nec feugiat. Elementum 
-        curabitur vitae nunc sed velit. Nulla porttitor massa id neque aliquam vestibulum morbi blandit. 
-        Tincidunt dui ut ornare lectus sit amet est placerat in. Varius duis at consectetur lorem donec massa 
-        sapien faucibus. Est sit amet facilisis magna etiam tempor.
-    </p>
     </ol>
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>

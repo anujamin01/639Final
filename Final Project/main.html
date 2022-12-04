@@ -23,7 +23,6 @@
         driven every day and engineers trying to make cars safer, many companies are turning to machine 
         learning and self-driving in order to help solve this problem. 
     </p>
-
     <p>
         This is an essential problem in the real world as there are an increasing number of cars with built-in 
         technologies to do this. For example, Tesla has self-driving cars, and many other big-name automotive 
@@ -39,25 +38,16 @@
 
     <h2>Importance of Lane Detection</h2>
     <p>
-        According to the article “Drowsy driving statistics and facts 2022” by Elizabeth Rivelli, there have 
+        Self driving cars and lane detection have the potential to make the world safer. For example, according
+        to the article “Drowsy driving statistics and facts 2022” by Elizabeth Rivelli, there have 
         been over 10,000 fatal crashes due to drowsy or careless driving, including failure to keep in the 
         proper lane, being distracted (by phone, talking eating, etc), and swerving due to weather, objects, 
         etc. These serious fatalities could be easily avoided by equipping programs in modern cars with good 
         traffic lane detections that can account for any, or at least most, situations (Rivelli, 2022).
     </p>
 
-    <h2>Motivation / Usage</h2>
+    <h2>Motivation / Usage (Potentially Remove?)</h2>
     <p>
-        This is an essential problem in the real world as there are an increasing number of cars with 
-        built-in technologies to do this. For example, Tesla has self-driving cars, and many other big-name 
-        automotive companies have technologies such as lane assist, ensuring that the driver is driving in 
-        the correct lane and direction. However, this technology is very new and has many problems. For 
-        example, how can the computer detect a lane in poor weather conditions or a faded-out lane? What if 
-        there are no street lights at night that prevent the computer from detecting any lanes? What about 
-        the effects of lane-like objects on the road such as railways and walkways? These variables affect 
-        every driver and can affect traffic lane detection as well. While existing algorithms can have a very 
-        high detection rate, generally most of these tests are done using favorable conditions such as a 
-        clear road and good lighting. 
     </p>
   
     <h2>Current State of Art</h2>
@@ -71,24 +61,16 @@
   
     <h2>Dataset</h2>
     <p>
-        We decided to use some of the images from the 
+        In order to better grasp the underlying image processing techniques used in lane detection, we opted to use clean and well lit images and video from the
+        <a href="https://www.kaggle.com/code/soumya044/lane-line-detection/">Lane Line Detection</a>.
+        Furthermore, in order to further evaluate the strengths and drawbacks of our model, we then decided to use some images from the 
         <a href="https://www.kaggle.com/datasets/jasonyuan000/unet-lanes-v3">UNet Lanes v3</a> dataset in 
-        Kaggle. To save on computation costs, a part of this dataset is a subset of a the much larger 
-        <a href="https://www.kaggle.com/datasets/thomasfermi/lane-detection-for-carla-driving-simulator">
-        Carla Self driving car lane</a> dataset. Additionally, images have been augmented to have dashed 
-        lines labelled as mostly solid. The other part of the dataset comes from a variety of sources raning 
-        from dashcam videos to images.
+        Kaggle. This is a fairly large and robust dataset containing road lane images from simulators to varying real world conditions.
     </p>
 
     <h2>Proposed Solution</h2>
     <p>
-        We decided to use some of the images from the 
-        <a href="https://www.kaggle.com/datasets/jasonyuan000/unet-lanes-v3">UNet Lanes v3</a> dataset in 
-        Kaggle. To save on computation costs, a part of this dataset is a subset of a the much larger 
-        <a href="https://www.kaggle.com/datasets/thomasfermi/lane-detection-for-carla-driving-simulator">
-            Carla Self driving car lane</a> dataset. Additionally, images have been augmented to have dashed 
-            lines labelled as mostly solid. The other part of the dataset comes from a variety of sources 
-            raning from dashcam videos to images.
+      Our proposed solution is an algorithm that, given static images or even a video of a car driving on the road, will detect and highlight lanes in real-time. This will done through the image processing techniques learned from class. This approach forms the foundation of many of the state of the art advanced techniques that are currently being implemented in industry and academia.
     </p>
 
     <h2>Proposed Method</h2>

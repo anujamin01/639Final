@@ -10,7 +10,7 @@
     <title>CS 639: Road Lane Detection</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="style.css">
   </head>
   <header>
     <h1>CS 639: Road Lane Detection</h1>
@@ -82,28 +82,99 @@
       <p>The intuitive step for lane detection is highlighting where potential lanes appear and masking the rest of the image. One can simply choose to select a color that is at least as bright as a lane and ignore the rest of the image. However, what happens if lane colors differ i.e. the left lane is yellow and the right lane is white? Clearly masking in itself will fail here. Therefore, it is critical that we use Canny Edge detection. 
       </p>
       <p>However, before we can do that we must turn the image into grayscale in order detect changes in color i.e. detect an edge. Then we follow the standard procedure of applying gaussian smoothing to eliminate any potential noise. We then applied canny edge detection with a proper lower and upper bound value to get the perfect amount of edge detection without having too many false positives. 
-      EMBED IMAGE HERE!
+      <div class="row">
+        <div class="column"> 
+          <img src="https://i.imgur.com/qbZFVdf.png" height="270" width="480">
+          <figcaption>Basic Color Selection Input</figcaption>
+        </div>
+        <div class="column"> 
+          <img src="https://i.imgur.com/NmYIv11.png" height="270" width="480">
+          <figcaption>Basic Color Selection Output</figcaption>
+        </div>
+      </div>
+      <div class="row">
+        <div class="column"> 
+          <img src="https://i.imgur.com/DzJoG9Z.png" height="270" width="480">
+          <figcaption>Color Selection with Varying Lane Colors Input</figcaption>
+        </div>
+        <div class="column"> 
+          <img src="https://i.imgur.com/zXQp88M.png" height="270" width="480">
+          <figcaption>Color Selection with Varying Lane Colors Output (Problem!)</figcaption>
+        </div>
+      </div>
+      <div class="row">
+        <div class="column"> 
+          <img src="https://i.imgur.com/GRGVlqi.png" height="270" width="480">
+          <figcaption>Color Selection via Canny Input</figcaption>
+        </div>
+        <div class="column"> 
+          <img src="https://i.imgur.com/yJ0fdB0.png" height="270" width="480">
+          <figcaption>Color Selection via Canny Output</figcaption>
+        </div>
+      </div>
+      
       </p>
       <h3><li>Applying Hough Transform</li></h3>
       <p>Now that we have applied Canny Edge detection, we need to use the hough transform in order to isolate the lanes. In order to do so, we create a mask over the region where the lanes would lie. We then proceed to apply the hough transform over this region and display the output. 
-      EMBED IMAGE HERE!
       </p>
+      <div class="row">
+        <div class="column"> 
+          <img src="https://i.imgur.com/vguhVex.jpeg" height="270" width="480">
+          <figcaption>Input 1</figcaption>
+        </div>
+        <div class="column"> 
+          <img src="https://i.imgur.com/5bnhw1v.jpeg" height="270" width="480">
+          <figcaption>Output 1</figcaption>
+        </div>
+      </div>
+      <div class="row">
+        <div class="column"> 
+          <img src="https://i.imgur.com/lVNX3kQ.jpeg" height="270" width="480">
+          <figcaption>Input 2</figcaption>
+        </div>
+        <div class="column"> 
+          <img src="https://i.imgur.com/1ar1HWz.jpeg" height="270" width="480">
+          <figcaption>Output 2</figcaption>
+        </div>
+      </div>
+      <div class="row">
+        <div class="column"> 
+          <img src="https://i.imgur.com/zFkNPnD.jpeg" height="270" width="480">
+          <figcaption>Input 3</figcaption>
+        </div>
+        <div class="column"> 
+          <img src="https://i.imgur.com/Lfe8Ngh.jpeg" height="270" width="480">
+          <figcaption>Output 3</figcaption>
+        </div>
+      </div>
       <h3><li>Streamlining the Process</li></h3>
       <p>Now that we are able to detect lanes on a static image, we need to detect lanes on a video stream. In order to do so, we just have to read in the image frame by frame and put each frame into our pipeline. We then join the new images with edge detection together and get a video stream of detected lanes.  
       EMBED VIDEO HERE!
       </p>
+      <div class="row">
+        <div class="column"> 
+          <img src="https://i.imgur.com/zFkNPnD.jpeg" height="270" width="480">
+          <figcaption>Video Stream (Notice Relatively Poor Edge Detection on Curves)</figcaption>
+        </div>
+
+      </div>
+    </ol>
     <h2>Problems with Current Approach</h2>
+    <p>
+      While we can clearly see above that the current approach is fairly accurate in detecting lanes. It requires a lot of manual fine tuning and it breaks when we look at different edge cases. For example, the model clearly cannot detect lanes correctly with the current pipeline when we extrapolate to nighttime detection or even change the angle. We would have to change the parameters of the canny edge detection and the size of the mask in order to properly detect lanes with these images. Even if we do this there is no guarantee that this will work. 
+    </p>
     <h2>Further Exploration</h2>
     <p>
-      For this project we used python and openCV in order to process an image i.e. a frame. 
-        We first worked on creating a mask to highlight where the ptential lanes are, and then used Canny Edge 
-        Detection in order to make the edges apprear much more defined. We then worked on applying the Hough 
-        transform in order to detect edges. Then we applied the model and test on images in our dataset.
-        
-        However, without using a deep learning technique, the images needs to be high contrast and low harsh weather conditions.
-        Therefore, we used a Convolutional Neural Network (CNN) to enhance our model to detect images in any conditions.
-
+      It is evident how complex lane detection truly is. In practice data has to be heavily preprocessed before it can be used. Many researchers have to spend countless hours labelling the lanes and then applying some machine learning model on a training dataset to get better predictions on the test dataset. Therefore, in order to improve our model, we would have to look into machine learning, specifically deep learning. Judging by the size of the original dataset we would need to look into using some form of a neural network like a CNN.
+    </p>
+    <h2>Resources</h2>
     <ol>
+      <li>https://www.kaggle.com/code/soumya044/lane-line-detection</li>
+      <li>https://www.preprints.org/manuscript/202202.0123/v1</li>
+      <li>https://www.bankrate.com/insurance/car/drowsy-driving-statistics/#drowsy-driving-statistics</li>
+      <li>https://ieeexplore.ieee.org/abstract/document/4580573</li>
+      <li>https://journals.sagepub.com/doi/full/10.1177/17298814211008752</li> 
+    </ol>
     </ol>
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>

@@ -46,10 +46,6 @@
         traffic lane detections that can account for any, or at least most, situations (Rivelli, 2022).
     </p>
 
-    <h2>Motivation / Usage (Potentially Remove?)</h2>
-    <p>
-    </p>
-  
     <h2>Current State of Art</h2>
     <p>
         <a herf="https://ieeexplore.ieee.org/abstract/document/4580573">Article</a>
@@ -59,6 +55,49 @@
         Islamic University Malaysia.
     </p>
   
+    <h2>Development Steps and Timeline of Project</h2>
+    <p>
+      <ul>
+        <li>
+          <b>
+            October 30th: 
+          </b>
+          Find dataset, and plan project's technical approach and implementation
+        </li>
+        <li>
+          <b>
+            November 5th:
+          </b>
+          Begin implementation of script to detect lanes in high resolution static images
+          <li>
+            <b>
+              November 15th:
+            </b>
+            Testing the accuracy of annotated images from our implementation by manually 
+            looking through the images to assure that the lanes are detected effectively, then further refining the process.
+          </li>
+          <li>
+            <b>
+              November 30th:
+            </b>
+            Implement script to detect lanes in a video streams.
+          </li>
+          <li>
+            <b>
+              December 5th:
+            </b>
+            Make improvements to implementation and clean up code, and well as more testing.
+          </li>
+          <li>
+            <b>
+              December 10th:
+            </b>
+            Finalize project and website, and create and record presentation.
+          </li>
+        </li>
+      </ul>
+    </p>
+
     <h2>Dataset</h2>
     <p>
         In order to better grasp the underlying image processing techniques used in lane detection, we opted to use clean and well lit images and video from the
@@ -149,23 +188,36 @@
       </div>
       <h3><li>Streamlining the Process</li></h3>
       <p>Now that we are able to detect lanes on a static image, we need to detect lanes on a video stream. In order to do so, we just have to read in the image frame by frame and put each frame into our pipeline. We then join the new images with edge detection together and get a video stream of detected lanes.  
-      EMBED VIDEO HERE!
       </p>
-      <div class="row">
-        <div class="column"> 
-          <img src="https://i.imgur.com/zFkNPnD.jpeg" height="270" width="480">
-          <figcaption>Video Stream (Notice Relatively Poor Edge Detection on Curves)</figcaption>
-        </div>
-
-      </div>
+      <iframe src="https://drive.google.com/file/d/1kBMQO3MYMfJ_W0G9gJKKzmamPcR7fi1d/preview" width="640" height="480" allow="autoplay"></iframe>
     </ol>
     <h2>Problems with Current Approach</h2>
     <p>
-      While we can clearly see above that the current approach is fairly accurate in detecting lanes. It requires a lot of manual fine tuning and it breaks when we look at different edge cases. For example, the model clearly cannot detect lanes correctly with the current pipeline when we extrapolate to nighttime detection or even change the angle. We would have to change the parameters of the canny edge detection and the size of the mask in order to properly detect lanes with these images. Even if we do this there is no guarantee that this will work. 
+      While we can clearly see above that the current approach is fairly accurate in detecting lanes. It requires a lot of manual fine tuning and it breaks when we look at different edge cases. We are having trouble detecting lanes when driving alongside a curve as shown above. Furthermore, the model clearly cannot detect lanes correctly with the current pipeline when we extrapolate to nighttime detection or even change the angle. We would have to change the parameters of the canny edge detection and the size of the mask in order to properly detect lanes with these images. Even if we do this there is no guarantee that this will work. 
     </p>
+    <div class="row">
+      <div class="column"> 
+        <img src="https://i.imgur.com/h3R3Y5o.png" height="270" width="480">
+        <figcaption>Failed Input 1</figcaption>
+      </div>
+      <div class="column"> 
+        <img src="https://i.imgur.com/uSvQd5h.png" height="270" width="480">
+        <figcaption>Failed Output 1</figcaption>
+      </div>
+    </div>
+    <div class="row">
+      <div class="column"> 
+        <img src="https://i.imgur.com/ng6aICb.png" height="270" width="480">
+        <figcaption>Failed Input 2</figcaption>
+      </div>
+      <div class="column"> 
+        <img src="https://i.imgur.com/ATU1CJ0.png" height="270" width="480">
+        <figcaption>Failed Output 2</figcaption>
+      </div>
+    </div>
     <h2>Further Exploration</h2>
     <p>
-      It is evident how complex lane detection truly is. In practice data has to be heavily preprocessed before it can be used. Many researchers have to spend countless hours labelling the lanes and then applying some machine learning model on a training dataset to get better predictions on the test dataset. Therefore, in order to improve our model, we would have to look into machine learning, specifically deep learning. Judging by the size of the original dataset we would need to look into using some form of a neural network like a CNN.
+      It is evident how complex lane detection truly is. In practice data has to be heavily preprocessed before it can be used. Many researchers have to spend countless hours labelling the lanes and then applying some machine learning model on a training dataset to get better predictions on the test dataset. Therefore, in order to improve our model, we would have to look into machine learning, specifically deep learning. Judging by the size of the original dataset we would need to look into using some form of a neural network like a CNN. This is a very time and computationally expensive task that would require further exploration. Additional direction for this project could be to do manual image processing by finetuning the pipeline to work with night time images and other extreme conditions to better fine tune the algorithm.  
     </p>
     <h2>Resources</h2>
     <ol>

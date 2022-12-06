@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>CS 639: Road Lane Detection</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <header>
+    <h1>CS 639: Road Lane Detection</h1>
+    <p>Anuj Amin & Prasun Guragain</p>
+  </header>
+  <body>
+    <h2>Problem</h2>
+    <p>
+        The problem statement we are trying to solve is detecting traffic lanes in real-time. With cars being 
+        driven every day and engineers trying to make cars safer, many companies are turning to machine 
+        learning and self-driving in order to help solve this problem. 
+    </p>
+    <p>
+        This is an essential problem in the real world as there are an increasing number of cars with built-in 
+        technologies to do this. For example, Tesla has self-driving cars, and many other big-name automotive 
+        companies have technologies such as lane assist, ensuring that the driver is driving in the correct 
+        lane and direction. However, this technology is still very new and has many problems. For example, 
+        how can the computer detect a lane in poor weather conditions or a faded-out lane? What if there are 
+        no street lights at night that prevent the computer from detecting any lanes? What about the effects 
+        of lane-like objects on the road such as railways and walkways? These variables affect every driver 
+        and can affect traffic lane detection as well. While existing algorithms can have a very high 
+        detection rate, generally most of these tests are done using favorable conditions such as a clear 
+        road and good lighting (Huang et. al, 2021). 
+    </p>
+
+    <h2>Importance of Lane Detection</h2>
+    <p>
+        Self driving cars and lane detection have the potential to make the world safer. For example, according
+        to the article “Drowsy driving statistics and facts 2022” by Elizabeth Rivelli, there have 
+        been over 10,000 fatal crashes due to drowsy or careless driving, including failure to keep in the 
+        proper lane, being distracted (by phone, talking eating, etc), and swerving due to weather, objects, 
+        etc. These serious fatalities could be easily avoided by equipping programs in modern cars with good 
+        traffic lane detections that can account for any, or at least most, situations (Rivelli, 2022).
+    </p>
+
+    <h2>Current State of Art</h2>
+    <p>
+        <a herf="https://ieeexplore.ieee.org/abstract/document/4580573">Article</a>
+        Many researchers has created high level road lane detection to account for any conditions, 
+        starting with a simple similar approch as ours, and adding more layed techniques to create effective algorithms.
+        For example, "Read time lane dection for autonomous vehicles" by some professors from International 
+        Islamic University Malaysia.
+    </p>
+  
+    <h2>Development Steps and Timeline of Project</h2>
+    <p>
+      <ul>
+        <li>
+          <b>
+            October 30th: 
+          </b>
+          Find dataset, and plan project's technical approach and implementation
+        </li>
+        <li>
+          <b>
+            November 5th:
+          </b>
+          Begin implementation of script to detect lanes in high resolution static images
+          <li>
+            <b>
+              November 15th:
+            </b>
+            Testing the accuracy of annotated images from our implementation by manually 
+            looking through the images to assure that the lanes are detected effectively, then further refining the process.
+          </li>
+          <li>
+            <b>
+              November 30th:
+            </b>
+            Implement script to detect lanes in a video streams.
+          </li>
+          <li>
+            <b>
+              December 5th:
+            </b>
+            Make improvements to implementation and clean up code, and well as more testing.
+          </li>
+          <li>
+            <b>
+              December 10th:
+            </b>
+            Finalize project and website, and create and record presentation.
+          </li>
+        </li>
+      </ul>
+    </p>
+
+    <h2>Dataset</h2>
+    <p>
+        In order to better grasp the underlying image processing techniques used in lane detection, we opted to use clean and well lit images and video from the
+        <a href="https://www.kaggle.com/code/soumya044/lane-line-detection/">Lane Line Detection</a>.
+        Furthermore, in order to further evaluate the strengths and drawbacks of our model, we then decided to use some images from the 
+        <a href="https://www.kaggle.com/datasets/jasonyuan000/unet-lanes-v3">UNet Lanes v3</a> dataset in 
+        Kaggle. This is a fairly large and robust dataset containing road lane images from simulators to varying real world conditions.
+    </p>
+
+    <h2>Proposed Solution</h2>
+    <p>
+      Our proposed solution is an algorithm that, given static images or even a video of a car driving on the road, will detect and highlight lanes in real-time. This will done through the image processing techniques learned from class. This approach forms the foundation of many of the state of the art advanced techniques that are currently being implemented in industry and academia.
+    </p>
+
+    <h2>Method</h2>
+    <p>
+      For this project we used python and openCV in order to process an image i.e. a frame. 
+    </p>
+    <ol>
+      <h3><li>Applying Canny Edge Detection</li></h3>
+      <p>The intuitive step for lane detection is highlighting where potential lanes appear and masking the rest of the image. One can simply choose to select a color that is at least as bright as a lane and ignore the rest of the image. However, what happens if lane colors differ i.e. the left lane is yellow and the right lane is white? Clearly masking in itself will fail here. Therefore, it is critical that we use Canny Edge detection. 
+      </p>
+      <p>However, before we can do that we must turn the image into grayscale in order detect changes in color i.e. detect an edge. Then we follow the standard procedure of applying gaussian smoothing to eliminate any potential noise. We then applied canny edge detection with a proper lower and upper bound value to get the perfect amount of edge detection without having too many false positives. 
+      <div class="row">
+        <div class="column"> 
+          <img src="https://i.imgur.com/qbZFVdf.png" height="270" width="480">
+          <figcaption>Basic Color Selection Input</figcaption>
+        </div>
+        <div class="column"> 
+          <img src="https://i.imgur.com/NmYIv11.png" height="270" width="480">
+          <figcaption>Basic Color Selection Output</figcaption>
+        </div>
+      </div>
+      <div class="row">
+        <div class="column"> 
+          <img src="https://i.imgur.com/DzJoG9Z.png" height="270" width="480">
+          <figcaption>Color Selection with Varying Lane Colors Input</figcaption>
+        </div>
+        <div class="column"> 
+          <img src="https://i.imgur.com/zXQp88M.png" height="270" width="480">
+          <figcaption>Color Selection with Varying Lane Colors Output (Problem!)</figcaption>
+        </div>
+      </div>
+      <div class="row">
+        <div class="column"> 
+          <img src="https://i.imgur.com/GRGVlqi.png" height="270" width="480">
+          <figcaption>Color Selection via Canny Input</figcaption>
+        </div>
+        <div class="column"> 
+          <img src="https://i.imgur.com/yJ0fdB0.png" height="270" width="480">
+          <figcaption>Color Selection via Canny Output</figcaption>
+        </div>
+      </div>
+      
+      </p>
+      <h3><li>Applying Hough Transform</li></h3>
+      <p>Now that we have applied Canny Edge detection, we need to use the hough transform in order to isolate the lanes. In order to do so, we create a mask over the region where the lanes would lie. We then proceed to apply the hough transform over this region and display the output. 
+      </p>
+      <div class="row">
+        <div class="column"> 
+          <img src="https://i.imgur.com/vguhVex.jpeg" height="270" width="480">
+          <figcaption>Input 1</figcaption>
+        </div>
+        <div class="column"> 
+          <img src="https://i.imgur.com/5bnhw1v.jpeg" height="270" width="480">
+          <figcaption>Output 1</figcaption>
+        </div>
+      </div>
+      <div class="row">
+        <div class="column"> 
+          <img src="https://i.imgur.com/lVNX3kQ.jpeg" height="270" width="480">
+          <figcaption>Input 2</figcaption>
+        </div>
+        <div class="column"> 
+          <img src="https://i.imgur.com/1ar1HWz.jpeg" height="270" width="480">
+          <figcaption>Output 2</figcaption>
+        </div>
+      </div>
+      <div class="row">
+        <div class="column"> 
+          <img src="https://i.imgur.com/zFkNPnD.jpeg" height="270" width="480">
+          <figcaption>Input 3</figcaption>
+        </div>
+        <div class="column"> 
+          <img src="https://i.imgur.com/Lfe8Ngh.jpeg" height="270" width="480">
+          <figcaption>Output 3</figcaption>
+        </div>
+      </div>
+      <h3><li>Streamlining the Process</li></h3>
+      <p>Now that we are able to detect lanes on a static image, we need to detect lanes on a video stream. In order to do so, we just have to read in the image frame by frame and put each frame into our pipeline. We then join the new images with edge detection together and get a video stream of detected lanes.  
+      </p>
+      <iframe src="https://drive.google.com/file/d/1kBMQO3MYMfJ_W0G9gJKKzmamPcR7fi1d/preview" width="640" height="480" allow="autoplay"></iframe>
+    </ol>
+    <h2>Problems with Current Approach</h2>
+    <p>
+      While we can clearly see above that the current approach is fairly accurate in detecting lanes. It requires a lot of manual fine tuning and it breaks when we look at different edge cases. We are having trouble detecting lanes when driving alongside a curve as shown above. Furthermore, the model clearly cannot detect lanes correctly with the current pipeline when we extrapolate to nighttime detection or even change the angle. We would have to change the parameters of the canny edge detection and the size of the mask in order to properly detect lanes with these images. Even if we do this there is no guarantee that this will work. 
+    </p>
+    <div class="row">
+      <div class="column"> 
+        <img src="https://i.imgur.com/h3R3Y5o.png" height="270" width="480">
+        <figcaption>Failed Input 1</figcaption>
+      </div>
+      <div class="column"> 
+        <img src="https://i.imgur.com/uSvQd5h.png" height="270" width="480">
+        <figcaption>Failed Output 1</figcaption>
+      </div>
+    </div>
+    <div class="row">
+      <div class="column"> 
+        <img src="https://i.imgur.com/ng6aICb.png" height="270" width="480">
+        <figcaption>Failed Input 2</figcaption>
+      </div>
+      <div class="column"> 
+        <img src="https://i.imgur.com/ATU1CJ0.png" height="270" width="480">
+        <figcaption>Failed Output 2</figcaption>
+      </div>
+    </div>
+    <h2>Further Exploration</h2>
+    <p>
+      It is evident how complex lane detection truly is. In practice data has to be heavily preprocessed before it can be used. Many researchers have to spend countless hours labelling the lanes and then applying some machine learning model on a training dataset to get better predictions on the test dataset. Therefore, in order to improve our model, we would have to look into machine learning, specifically deep learning. Judging by the size of the original dataset we would need to look into using some form of a neural network like a CNN. This is a very time and computationally expensive task that would require further exploration. Additional direction for this project could be to do manual image processing by finetuning the pipeline to work with night time images and other extreme conditions to better fine tune the algorithm.  
+    </p>
+    <h2>Resources</h2>
+    <ol>
+      <li>https://www.kaggle.com/code/soumya044/lane-line-detection</li>
+      <li>https://www.preprints.org/manuscript/202202.0123/v1</li>
+      <li>https://www.bankrate.com/insurance/car/drowsy-driving-statistics/#drowsy-driving-statistics</li>
+      <li>https://ieeexplore.ieee.org/abstract/document/4580573</li>
+      <li>https://journals.sagepub.com/doi/full/10.1177/17298814211008752</li> 
+    </ol>
+    </ol>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    
+    <script src="" async defer></script>
+  </body>
+</html>
